@@ -1,4 +1,7 @@
 package com.example.dnd.repos;
 
-public interface TaskRepo {
+import com.example.dnd.entities.Task;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface TaskRepo extends JpaRepository<Task, Integer> {
 }
