@@ -30,22 +30,27 @@ public class User {
     private String email;
     private String password;
     private String position;
-    private int lvl;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "level_id", nullable = true)
+    private Level level;
 
     @Column(unique = true)
     private String phone;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "competition_id")
+    @JoinColumn(name = "user_cr")
     private List<Competition> competitionList = new ArrayList<>();
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "team_id")
-//    private Team team;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team_id", nullable = true)
+    private Team team;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_cr")
     private List<Criteria> criteriaList = new ArrayList<>();
+
+    private String avatar;
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "address_id")
 

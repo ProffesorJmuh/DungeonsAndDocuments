@@ -26,20 +26,15 @@ public class UserController {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    @GetMapping("/success")
-    public String getSuccessPage(HttpServletRequest request, Model model) {
-        model.addAttribute("title", "login success");
-
-        return "success";
-    }
 
 
-    @GetMapping("/user/{user_id}")
+    @GetMapping("/{user_id}")
     public String getUserPage(Model model,
                               @PathVariable("user_id") Integer user_id) {
-        model.addAttribute("title", "login success");
-        model.addAttribute("user", user_id);
-        return "success";
+        User user = userRepo.findById(user_id).get();
+        model.addAttribute("title", "Карточка игрока");
+        model.addAttribute("user", user);
+        return "user";
     }
     @DeleteMapping("login")
     @ResponseBody
@@ -61,4 +56,10 @@ public class UserController {
         userRepo.save(user);
     }
 
+
+    @GetMapping("chooseAvatar")
+    public String chooseAvatar(Model model){
+        model.addAttribute("title", "Выберете свой аватар");
+        return "user/chooseAvatar";
+    }
 }

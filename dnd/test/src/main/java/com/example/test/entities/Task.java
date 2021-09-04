@@ -26,6 +26,6 @@ public class Task {
     private User assigned;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "task_id")
+    @JoinColumn(name = "task")
     private List<Criteria> criteriaList = new ArrayList<>();
 }

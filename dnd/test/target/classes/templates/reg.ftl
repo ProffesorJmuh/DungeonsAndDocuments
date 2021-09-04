@@ -25,6 +25,12 @@
         </div>
         <br>
         <div class="form-control">
+            <label for="icon" class="col-2">Выберете вашу команду: </label>
+            <input type="text" class="col-2" name="teamName" id="teamName"/>
+            <input type="hidden" name="team_id" id="team_id"/>
+        </div>
+        <br>
+        <div class="form-control">
             <label for="phone" class="col-2">Введите телефон: </label>
             <input type="text" class="col-2" name="phone" id="phone"/>
         </div>
@@ -38,6 +44,19 @@
             <input class="btn btn-success" type="submit" value="Создать!"/>
 
         </div>
+        <script>
+            $("#teamName").autocomplete({
+                                source: "/getTeamsByTerm",
+                                maxHeight: 400,
+                                maxWidth: $(this).width,
+                                minLength: 0,
+                                select: function (event, ui) {
+                                    $("#teamName").val(ui.item.label)
+                                    $("#team_id").val(ui.item.value);
+                                    return false;
+                                }
+                            })
+        </script>
 
     </form>
 

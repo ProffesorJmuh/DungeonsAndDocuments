@@ -23,7 +23,7 @@ public class CompetitionController {
         Competition competition = new Competition();
 //        competition.setCompetition_id(competitionDto.getCompetition_id());
         competition.setName(competitionDto.getName());
-        competition.setUser(userRepo.findById(competitionDto.getUser()).get());
+        competition.setUser_cr(userRepo.findById(competitionDto.getUser()).get());
 
         competitionRepo.save(competition);
     }
@@ -33,7 +33,7 @@ public class CompetitionController {
         Competition competition = competitionRepo.findById(competitionDto.getId()).get();
         competition.setCompetition_id(competitionDto.getCompetition_id());
         competition.setName(competitionDto.getName());
-        competition.setUser(userRepo.findById(competitionDto.getUser()).get());
+        competition.setUser_cr(userRepo.findById(competitionDto.getUser()).get());
 
         competitionRepo.save(competition);
     }

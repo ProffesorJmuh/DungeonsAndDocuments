@@ -8,95 +8,68 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+
         <!-- Latest compiled and minified CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-                      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
-                      crossorigin="anonymous">
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
-                        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-                        crossorigin="anonymous"></script>
-                <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+              integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+              crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+                crossorigin="anonymous"></script>
 
-                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-                <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+        <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
 
         <title>${title}</title>
     </head>
     <body>
+        <header>
+            <div class="logo">
+                <a href="">
+                    <img id="logotipe" class='graficlogo' src="/img/logo.png" alt="Logo"/>
+                </a>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">DND</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/customer">Профиль</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/rating">Рейтинг</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/category">Задания</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/characteristic">Магазин</a>
-                    </li>
-
-                </ul>
-                <#if known>
-                    <form id="logoutForm" action="/logout" method="POST">
-                        <button class="btn btn-light" type="submit">Logout</button>
-                    </form>
-                <#else>
-                    <a href="/login" class="btn btn-primary">Sign in</a>
-                </#if>
-
+                <nav>
+                    <div class="btn">
+                        <a href="index.html">Профиль</a>
+                        <a href="projects.html" target="_self">Рейтинг</a>
+                        <a href="blog.html" target="_self">Задания</a>
+                        <a href="contact.html" target="_self">Гильдии</a>
+                        <a href="about.html" target="_self">Магазин</a>
+                    </div>
+                </nav>
             </div>
-        </div>
-    </nav>
+
+        </header>
     <div class="container mt-3">
         <#nested>
     </div>
 
 
-
     <script>
         console.log(document.cookie)
-
         function set_cookie(name, value, exp_y, exp_m, exp_d, path, domain, secure) {
             var cookie_string = name + "=" + escape(value);
-
             if (exp_y) {
                 var expires = new Date(exp_y, exp_m, exp_d);
                 cookie_string += "; expires=" + expires.toGMTString();
             }
-
             if (path)
                 cookie_string += "; path=" + escape(path);
-
             if (domain)
                 cookie_string += "; domain=" + escape(domain);
-
             if (secure)
                 cookie_string += "; secure";
-
             document.cookie = cookie_string;
         }
-
         function eraseCookie(name, path, domain) {
             console.log(get_cookie(name))
             document.cookie = name + "=" +
                 ((path) ? ";path=" + path : "") +
                 ((domain) ? ";domain=" + domain : "") +
                 ";Max-Age=-99999999;";
-
         }
-
         function delete_cookie(cookie_name, path, domain) {
             console.log(get_cookie('Authorization'))
             var cookie_date = new Date();  // Текущая дата и время
@@ -105,12 +78,9 @@
                 ((path) ? ";path=" + path : "") +
                 ((domain) ? ";domain=" + domain : "") +
                 ";expires=Thu, 01 Jan 1970 00:00:01 GMT";
-
         }
-
         function get_cookie(cookie_name) {
             var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
-
             if (results)
                 return (unescape(results[2]));
             else

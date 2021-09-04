@@ -19,9 +19,9 @@ public class Team {
 
     private String icon;
 
-//    @OneToMany(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "user_id")
-//    private List<User> users = new ArrayList<>();
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "team", nullable = true)
+    private List<User> users = new ArrayList<>();
 
 
     @OneToOne(cascade = CascadeType.ALL)

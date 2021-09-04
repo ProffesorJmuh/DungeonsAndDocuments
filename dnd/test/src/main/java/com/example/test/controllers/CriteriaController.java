@@ -3,7 +3,10 @@ package com.example.test.controllers;
 
 import com.example.test.dto.CriteriaDto;
 import com.example.test.entities.Criteria;
+import com.example.test.entities.Level;
+import com.example.test.entities.User;
 import com.example.test.repos.CriteriaRepo;
+import com.example.test.repos.LevelRepo;
 import com.example.test.repos.TaskRepo;
 import com.example.test.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +23,27 @@ public class CriteriaController {
     TaskRepo taskRepo;
     @Autowired
     UserRepo userRepo;
+    @Autowired
+    LevelRepo levelRepo;
+
 
     @PostMapping("/criteria")
     public void createRest(CriteriaDto criteriaDto){
         Criteria criteria = new Criteria();
 
+
 //        criteria.setCriteria_id(criteriaDto.getCriteria_id());
         criteria.setTask(taskRepo.findById(criteriaDto.getTask()).get());
         criteria.setType(criteriaDto.getType());
-        criteria.setUser(userRepo.findById(criteriaDto.getUser()).get());
+        User user = userRepo.findById(criteriaDto.getUser()).get();
+        criteria.setUser_cr(user);
 
+        Double userExp = criteriaRepo.getUserExp(user.getUser_id());
+        Level levelCheck = levelRepo.getCurrLevel(userExp);
+        if(levelCheck != user.getLevel() && levelCheck != null){
+            user.setLevel(levelCheck);
+            userRepo.save(user);
+        }
         criteriaRepo.save(criteria);
     }
 
@@ -40,7 +54,15 @@ public class CriteriaController {
         criteria.setCriteria_id(criteriaDto.getCriteria_id());
         criteria.setTask(taskRepo.findById(criteriaDto.getTask()).get());
         criteria.setType(criteriaDto.getType());
-        criteria.setUser(userRepo.findById(criteriaDto.getUser()).get());
+        User user = userRepo.findById(criteriaDto.getUser()).get();
+        criteria.setUser_cr(user);
+
+        Double userExp = criteriaRepo.getUserExp(user.getUser_id());
+        Level levelCheck = levelRepo.getCurrLevel(userExp);
+        if(levelCheck != user.getLevel() && levelCheck != null){
+            user.setLevel(levelCheck);
+            userRepo.save(user);
+        }
 
         criteriaRepo.save(criteria);
     }

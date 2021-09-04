@@ -3,6 +3,7 @@ package com.example.test.controllers;
 
 import com.example.test.dto.TaskDto;
 import com.example.test.entities.Task;
+import com.example.test.entities.Team;
 import com.example.test.repos.CriteriaRepo;
 import com.example.test.repos.TaskRepo;
 import com.example.test.repos.UserRepo;
@@ -26,7 +27,20 @@ public class TaskController {
         model.addAttribute("title", "Добавить задачу");
         return "task/new";
     }
+    @GetMapping("{task_id}")
+    public void showTask(@PathVariable("task_id") Integer taskId, Model model){
+        Task task = taskRepo.findById(taskId).get();
 
+        model.addAttribute("title", task.getName());
+        model.addAttribute("task", task);
+
+    }
+    @GetMapping
+    public String tasks(Model model){
+        model.addAttribute("title", "Задания");
+        model.addAttribute("tasks", taskRepo.findAll());
+        return "task/index";
+    }
     
 
     @Autowired
