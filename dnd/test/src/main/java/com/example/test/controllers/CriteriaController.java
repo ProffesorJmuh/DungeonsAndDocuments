@@ -23,9 +23,9 @@ public class CriteriaController {
 
     @PostMapping("/criteria")
     public void createRest(CriteriaDto criteriaDto){
-        Criteria criteria = criteriaRepo.findById(criteriaDto.getId()).get();
+        Criteria criteria = new Criteria();
 
-        criteria.setCriteria_id(criteriaDto.getCriteria_id());
+//        criteria.setCriteria_id(criteriaDto.getCriteria_id());
         criteria.setTask(taskRepo.findById(criteriaDto.getTask()).get());
         criteria.setType(criteriaDto.getType());
         criteria.setUser(userRepo.findById(criteriaDto.getUser()).get());

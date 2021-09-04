@@ -32,13 +32,13 @@ public class MainController {
     UserRepo userRepo;
     @GetMapping("/login")
     public String getLoginPage(Model model) {
-        model.addAttribute("title", "login");
+        model.addAttribute("title", "Войдите в свой аккаунт");
         return "login";
     }
 
     @GetMapping("/login/new")
     public String signUp(Model model){
-        model.addAttribute("title", "registration");
+        model.addAttribute("title", "Регистрация");
         return "reg";
     }
     @PostMapping("/login/new")

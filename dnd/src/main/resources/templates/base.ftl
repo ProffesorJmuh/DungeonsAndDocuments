@@ -50,13 +50,7 @@
                     </li>
 
                 </ul>
-                <#if known>
-                    <form id="logoutForm" action="/logout" method="POST">
-                        <button class="btn btn-light" type="submit">Logout</button>
-                    </form>
-                <#else>
-                    <a href="/login" class="btn btn-primary">Sign in</a>
-                </#if>
+                
 
             </div>
         </div>

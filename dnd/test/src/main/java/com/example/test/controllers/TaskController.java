@@ -8,9 +8,8 @@ import com.example.test.repos.TaskRepo;
 import com.example.test.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -24,7 +23,7 @@ public class TaskController {
 
     @GetMapping("/new")
     public String createTask(Model model){
-        model.addAttribute("title", "Новый мотстр появился");
+        model.addAttribute("title", "Добавить задачу");
         return "task/new";
     }
 
@@ -35,24 +34,24 @@ public class TaskController {
     @Autowired
     CriteriaRepo criteriaRepo;
 
-    @PostMapping("/task")
+    @PostMapping()
     public void createRest(TaskDto taskDto){
-        Task task = taskRepo.findById(taskDto.getId()).get();
+        Task task = new Task();
 
-        task.setTeam_id(taskDto.getTeam_id());
+//        task.setTeam_id(taskDto.getTeam_id());
         task.setName(taskDto.getName());
         task.setDescription(taskDto.getDescription());
-        task.setPrice(Double.parseDouble(taskDto.getPrice()));
+//        task.setPrice(Double.parseDouble(taskDto.getPrice()));
         task.setAssigned(userRepo.findById(taskDto.getAssigned()).get());
 
         taskRepo.save(task);
     }
 
-    @PutMapping("task")
+    @PutMapping()
     public void updateRest(TaskDto taskDto){
         Task task = taskRepo.findById(taskDto.getId()).get();
 
-        task.setTeam_id(taskDto.getId());
+        task.setTask_id(taskDto.getId());
         task.setName(taskDto.getName());
         task.setDescription(taskDto.getDescription());
         task.setPrice(Double.parseDouble(taskDto.getPrice()));
@@ -64,7 +63,7 @@ public class TaskController {
         taskRepo.save(task);
     }
 
-    @DeleteMapping("task")
+    @DeleteMapping()
     public void  deleteRest(TaskDto taskDto){
         Task task = taskRepo.findById(taskDto.getId()).get();
 

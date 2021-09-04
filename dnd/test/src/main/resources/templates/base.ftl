@@ -26,7 +26,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">CustomerSubSystem</a>
+            <a class="navbar-brand" href="#">DND</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -35,24 +35,21 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/customer">Customers</a>
+                        <a class="nav-link" aria-current="page" href="/customer">Профиль</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/offer">Offers</a>
+                        <a class="nav-link" aria-current="page" href="/rating">Рейтинг</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/category">Categories</a>
+                        <a class="nav-link" aria-current="page" href="/category">Задания</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/characteristic">Characteristics</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/order">Orders</a>
+                        <a class="nav-link" aria-current="page" href="/characteristic">Магазин</a>
                     </li>
 
                 </ul>
                 <#if known>
-                    <form id="logoutForm" action="/api/logout" method="POST">
+                    <form id="logoutForm" action="/logout" method="POST">
                         <button class="btn btn-light" type="submit">Logout</button>
                     </form>
                 <#else>
@@ -66,38 +63,7 @@
         <#nested>
     </div>
 
-    <script>
-        $("#logoutForm").on("submit", function(e) {
 
-            e.preventDefault(); // avoid to execute the actual submit of the form.
-
-            var form = $(this);
-            var url = form.attr('action');
-
-            $.ajax({
-                type: "POST",
-                url: url,
-                data: form.serialize(),
-                success: function(data)
-                {
-                    console.log(data);
-                    eraseCookie('JSESSIONID', '/')
-                    eraseCookie('Authorization', '/')
-                    location.reload()
-                    // delete_cookie('Authorization', '/')
-
-                    // var url = "/customer/" + data["customer_id"];
-                    // $(location).attr('href',url);
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-
-
-        });
-
-    </script>
 
     <script>
         console.log(document.cookie)

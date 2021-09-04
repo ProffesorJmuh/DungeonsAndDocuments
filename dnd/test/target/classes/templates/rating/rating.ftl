@@ -2,7 +2,7 @@
 
 <@base.body "${title}">
     <#list userList as userRating>
-        ${userRating.user.firstName} - ${userRating.result}
+        ${userRating.user.email} - ${userRating.result}<#sep><br></#sep>
     </#list>
     <br/>
     <hr/>

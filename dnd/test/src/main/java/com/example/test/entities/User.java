@@ -44,7 +44,7 @@ public class User {
 //    private Team team;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "criteria_id")
+    @JoinColumn(name = "user_id")
     private List<Criteria> criteriaList = new ArrayList<>();
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "address_id")

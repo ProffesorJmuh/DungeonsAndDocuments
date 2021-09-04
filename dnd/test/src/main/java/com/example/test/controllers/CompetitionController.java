@@ -20,8 +20,8 @@ public class CompetitionController {
 
     @PostMapping("/competition")
     public void createRest(CompetitionDto  competitionDto){
-        Competition competition = competitionRepo.findById(competitionDto.getId()).get();
-        competition.setCompetition_id(competitionDto.getCompetition_id());
+        Competition competition = new Competition();
+//        competition.setCompetition_id(competitionDto.getCompetition_id());
         competition.setName(competitionDto.getName());
         competition.setUser(userRepo.findById(competitionDto.getUser()).get());
 

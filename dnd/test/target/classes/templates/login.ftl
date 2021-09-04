@@ -7,15 +7,15 @@
             <h2 class="form-signin-heading">Login</h2>
             <p>
                 <label for="username">Email</label>
-                <input type="text" id="username" name="username" class="form-control" placeholder="username" required>
+                <input type="text" id="username" name="username" class="form-control" placeholder="email" required>
             </p>
             <p>
-                <label for="password">Password</label>
+                <label for="password">Пароль</label>
                 <input type="password" id="password" name="password" class="form-control" placeholder="Password" required>
             </p>
             <div class="d-flex flex-row">
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                <a class="btn btn-lg btn-success btn-block" href="/login/new">Sign up</a>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
+                <a class="btn btn-lg btn-success btn-block" href="/login/new">Зарегестрироваться</a>
             </div>
         </form>
     </div>

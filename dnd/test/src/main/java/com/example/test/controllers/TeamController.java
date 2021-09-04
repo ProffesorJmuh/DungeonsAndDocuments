@@ -24,15 +24,15 @@ public class TeamController {
 
     @PostMapping("/team")
     public void createRest(TeamDto teamDto){
-        Team team = teamRepo.findById(teamDto.getId()).get();
+        Team team = new Team();
 
-        team.setTeam_id(teamDto.getTeam_id());
+//        team.setTeam_id(teamDto.getTeam_id());
         team.setCaptain(userRepo.findById(teamDto.getId()).get());
         team.setName(teamDto.getName());
         team.setIcon(teamDto.getIcon());
-        team.setUsers(Arrays.stream(teamDto.getUsers())
-                .map((id)-> userRepo.findById(Integer.parseInt(id)).get())
-                .collect(Collectors.toList()));
+//        team.setUsers(Arrays.stream(teamDto.getUsers())
+//                .map((id)-> userRepo.findById(Integer.parseInt(id)).get())
+//                .collect(Collectors.toList()));
 
         teamRepo.save(team);
     }
@@ -45,9 +45,9 @@ public class TeamController {
         team.setCaptain(userRepo.findById(teamDto.getId()).get());
         team.setName(teamDto.getName());
         team.setIcon(teamDto.getIcon());
-        team.setUsers(Arrays.stream(teamDto.getUsers())
-                .map((id)-> userRepo.findById(Integer.parseInt(id)).get())
-                .collect(Collectors.toList()));
+//        team.setUsers(Arrays.stream(teamDto.getUsers())
+//                .map((id)-> userRepo.findById(Integer.parseInt(id)).get())
+//                .collect(Collectors.toList()));
 
         teamRepo.save(team);
     }

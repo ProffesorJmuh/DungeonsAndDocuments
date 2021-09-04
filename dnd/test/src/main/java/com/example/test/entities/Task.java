@@ -15,7 +15,7 @@ import java.util.List;
 public class Task {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer team_id;
+    private Integer task_id;
 
     private String name;
     private String description;
@@ -26,6 +26,6 @@ public class Task {
     private User assigned;
 
     @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "criteria_id")
+    @JoinColumn(name = "task_id")
     private List<Criteria> criteriaList = new ArrayList<>();
 }
