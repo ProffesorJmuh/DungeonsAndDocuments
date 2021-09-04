@@ -1,7 +1,10 @@
 package com.example.test.entities;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "competitions")
 public class Competition {
