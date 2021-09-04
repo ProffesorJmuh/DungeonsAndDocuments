@@ -4,6 +4,8 @@ package com.example.test.controllers;
 import com.example.test.dto.CriteriaDto;
 import com.example.test.entities.Criteria;
 import com.example.test.repos.CriteriaRepo;
+import com.example.test.repos.TaskRepo;
+import com.example.test.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,15 +16,19 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class CriteriaController {
     @Autowired
     CriteriaRepo criteriaRepo;
+    @Autowired
+    TaskRepo taskRepo;
+    @Autowired
+    UserRepo userRepo;
 
     @PostMapping("/criteria")
     public void createRest(CriteriaDto criteriaDto){
         Criteria criteria = criteriaRepo.findById(criteriaDto.getId()).get();
 
         criteria.setCriteria_id(criteriaDto.getCriteria_id());
-        criteria.setTask(criteriaDto.getTask());
+        criteria.setTask(taskRepo.findById(criteriaDto.getTask()).get());
         criteria.setType(criteriaDto.getType());
-        criteria.setUser(criteriaDto.getUser());
+        criteria.setUser(userRepo.findById(criteriaDto.getUser()).get());
 
         criteriaRepo.save(criteria);
     }
@@ -32,9 +38,9 @@ public class CriteriaController {
         Criteria criteria = criteriaRepo.findById(criteriaDto.getId()).get();
 
         criteria.setCriteria_id(criteriaDto.getCriteria_id());
-        criteria.setTask(criteriaDto.getTask());
+        criteria.setTask(taskRepo.findById(criteriaDto.getTask()).get());
         criteria.setType(criteriaDto.getType());
-        criteria.setUser(criteriaDto.getUser());
+        criteria.setUser(userRepo.findById(criteriaDto.getUser()).get());
 
         criteriaRepo.save(criteria);
     }

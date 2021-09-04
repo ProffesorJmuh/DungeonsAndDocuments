@@ -9,5 +9,5 @@ public class TeamDto {
     private String name;
     private String icon;
     private String[] users;
-    private User captain;
+    private Integer captain;
 }

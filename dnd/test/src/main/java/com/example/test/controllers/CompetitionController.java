@@ -4,6 +4,7 @@ import com.example.test.dto.CompetitionDto;
 import com.example.test.entities.Competition;
 import com.example.test.entities.Task;
 import com.example.test.repos.CompetitionRepo;
+import com.example.test.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,13 +15,15 @@ import org.springframework.web.bind.annotation.PutMapping;
 public class CompetitionController {
     @Autowired
     CompetitionRepo competitionRepo;
+    @Autowired
+    UserRepo userRepo;
 
     @PostMapping("/competition")
     public void createRest(CompetitionDto  competitionDto){
         Competition competition = competitionRepo.findById(competitionDto.getId()).get();
         competition.setCompetition_id(competitionDto.getCompetition_id());
         competition.setName(competitionDto.getName());
-        competition.setUser(competitionDto.getUser());
+        competition.setUser(userRepo.findById(competitionDto.getUser()).get());
 
         competitionRepo.save(competition);
     }
@@ -30,7 +33,7 @@ public class CompetitionController {
         Competition competition = competitionRepo.findById(competitionDto.getId()).get();
         competition.setCompetition_id(competitionDto.getCompetition_id());
         competition.setName(competitionDto.getName());
-        competition.setUser(competitionDto.getUser());
+        competition.setUser(userRepo.findById(competitionDto.getUser()).get());
 
         competitionRepo.save(competition);
     }

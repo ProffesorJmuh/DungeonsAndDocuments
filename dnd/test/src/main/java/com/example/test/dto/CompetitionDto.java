@@ -8,5 +8,5 @@ public class CompetitionDto {
     private Integer id;
     private Integer competition_id;
     private String name;
-    private User user;
+    private Integer user;
 }

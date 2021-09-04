@@ -13,6 +13,6 @@ public class CriteriaDto {
     private Integer id;
     private Integer criteria_id;
     private String type;
-    private Task task;
-    private User user;
+    private Integer task;
+    private Integer user;
 }

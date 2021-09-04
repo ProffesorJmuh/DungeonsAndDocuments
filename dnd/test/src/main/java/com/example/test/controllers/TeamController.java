@@ -27,7 +27,7 @@ public class TeamController {
         Team team = teamRepo.findById(teamDto.getId()).get();
 
         team.setTeam_id(teamDto.getTeam_id());
-        team.setCaptain(teamDto.getCaptain());
+        team.setCaptain(userRepo.findById(teamDto.getId()).get());
         team.setName(teamDto.getName());
         team.setIcon(teamDto.getIcon());
         team.setUsers(Arrays.stream(teamDto.getUsers())
@@ -42,7 +42,7 @@ public class TeamController {
         Team team = teamRepo.findById(teamDto.getId()).get();
 
         team.setTeam_id(teamDto.getTeam_id());
-        team.setCaptain(teamDto.getCaptain());
+        team.setCaptain(userRepo.findById(teamDto.getId()).get());
         team.setName(teamDto.getName());
         team.setIcon(teamDto.getIcon());
         team.setUsers(Arrays.stream(teamDto.getUsers())
