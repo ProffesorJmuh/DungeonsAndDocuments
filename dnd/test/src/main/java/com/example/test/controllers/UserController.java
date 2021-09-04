@@ -57,19 +57,8 @@ public class UserController {
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setPhone(userDto.getPhone());
         Optional<Team> team = teamRepo.findById(userDto.getTeam_id());
-        user.setTeam(team.get());
+//        user.setTeam(team.get());
         userRepo.save(user);
     }
-    @PostMapping("/login")
-    @ResponseBody
-    public void createUser(UserDto userDto) {
-        User user = new User();
-        user.setEmail(userDto.getEmail());
-        user.setLastName(userDto.getLastName());
-        user.setPassword(passwordEncoder.encode(userDto.getPassword()));
-        user.setPhone(userDto.getPhone());
-        Optional<Team> team = teamRepo.findById(userDto.getTeam_id());
-        user.setTeam(team.get());
-        userRepo.save(user);
-    }
+
 }

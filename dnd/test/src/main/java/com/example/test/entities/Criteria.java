@@ -21,4 +21,8 @@ public class Criteria {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
+
+    private double cost;
+
+
 }

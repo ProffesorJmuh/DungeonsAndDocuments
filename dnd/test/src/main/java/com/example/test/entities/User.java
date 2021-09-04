@@ -13,8 +13,16 @@ import java.util.List;
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer user_id;
+
+    public Integer getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Integer user_id) {
+        this.user_id = user_id;
+    }
 
     private String firstName;
     private String lastName;
@@ -31,9 +39,9 @@ public class User {
     @JoinColumn(name = "competition_id")
     private List<Competition> competitionList = new ArrayList<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "team_id")
-    private Team team;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "team_id")
+//    private Team team;
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "criteria_id")

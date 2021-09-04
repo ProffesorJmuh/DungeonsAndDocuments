@@ -1,7 +1,9 @@
 <#import "base.ftl" as base>
 
 <@base.body "${title}">
-    <form id="addForm" method="POST" action="/login">
+    <form method="POST" action="/login/new">
+    
+        <input type="hidden" name="_csrf" value="${_csrf.token}" />
         <div class="form-control">
             <label for="email" class="col-2">Enter email: </label>
             <input type="email" class="col-2" name="email" id="email"/>
@@ -30,7 +32,7 @@
         <br>
 
         <div class="d-flex flex-row">
-            <input class="btn btn-success" type="submit" value="Create!"/>
+            <input class="btn btn-success" type="submit" value="Create!asd"/>
 
         </div>
 

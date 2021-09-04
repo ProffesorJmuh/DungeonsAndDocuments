@@ -3,6 +3,7 @@
 <@base.body "${title}">
     <div class="container">
         <form id="loginForm" class="form-signin" method="post" action="/login">
+            <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <h2 class="form-signin-heading">Login</h2>
             <p>
                 <label for="email">Email</label>
