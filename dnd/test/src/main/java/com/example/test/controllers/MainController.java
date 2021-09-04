@@ -1,5 +1,6 @@
 package com.example.test.controllers;
 
+import com.example.test.dto.LabelAndValueDto;
 import com.example.test.dto.UserDto;
 import com.example.test.entities.Team;
 import com.example.test.entities.User;
@@ -12,9 +13,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -54,4 +59,21 @@ public class MainController {
 //    public void signIn(UserDto userDto){
 //        if()
 //    }
+
+
+    @GetMapping("/getUsersByTerm")
+    @ResponseBody
+    public List<LabelAndValueDto> getUsersByTerm(
+
+            @RequestParam(value = "term", required = false, defaultValue = "") String term) {
+        List<User> userList = userRepo.findAll();
+
+
+        List<LabelAndValueDto> suggestions = userList.stream()
+                .filter(user -> user.getEmail().contains(term))
+                .map(user -> new LabelAndValueDto(user.getEmail(), user.getUser_id().toString()))
+                .collect(Collectors.toList());
+        return suggestions;
+    }
+
 }

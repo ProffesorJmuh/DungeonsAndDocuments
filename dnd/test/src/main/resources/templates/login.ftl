@@ -6,8 +6,8 @@
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
             <h2 class="form-signin-heading">Login</h2>
             <p>
-                <label for="email">Email</label>
-                <input type="text" id="email" name="email" class="form-control" placeholder="email" required>
+                <label for="username">Email</label>
+                <input type="text" id="username" name="username" class="form-control" placeholder="username" required>
             </p>
             <p>
                 <label for="password">Password</label>
