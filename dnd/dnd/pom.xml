@@ -9,9 +9,9 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>CustomerSubSystem</artifactId>
+    <artifactId>dnd</artifactId>
     <version>${parent.version}</version>
-    <name>CustomerSubSystem</name>
+    <name>dnd</name>
     <url>http://maven.apache.org</url>
 
 

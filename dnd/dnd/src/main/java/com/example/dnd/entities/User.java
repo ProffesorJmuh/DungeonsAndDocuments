@@ -25,6 +25,10 @@ public class User {
     @Column(unique = true)
     private String phone;
 
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "competition_id")
+    private List<Competition> competitionList = new ArrayList<>();
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
     private Team team;
