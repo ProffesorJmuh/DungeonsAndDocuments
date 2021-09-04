@@ -20,9 +20,14 @@ public class User {
     private String email;
     private String password;
     private String position;
+    private int lvl;
 
     @Column(unique = true)
     private String phone;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "competition_id")
+    private List<Competition> competitionList = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "team_id")
