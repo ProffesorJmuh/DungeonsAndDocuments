@@ -4,10 +4,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>SecondLab</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>dnd</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>SecondLab</name>
+    <name>dnd</name>
     <packaging>pom</packaging>
 
     <parent>
@@ -21,6 +21,6 @@
     </properties>
 
     <modules>
-        <module>dnd</module>
+        <module>test</module>
     </modules>
 </project>
