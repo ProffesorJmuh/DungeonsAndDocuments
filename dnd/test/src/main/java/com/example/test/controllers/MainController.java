@@ -6,10 +6,7 @@ import com.example.test.entities.Category;
 import com.example.test.entities.Criteria;
 import com.example.test.entities.Team;
 import com.example.test.entities.User;
-import com.example.test.repos.CategoryRepo;
-import com.example.test.repos.CriteriaRepo;
-import com.example.test.repos.TeamRepo;
-import com.example.test.repos.UserRepo;
+import com.example.test.repos.*;
 import com.example.test.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -38,7 +35,8 @@ public class MainController {
     CriteriaRepo criteriaRepo;
     @Autowired
     CategoryRepo categoryRepo;
-
+    @Autowired
+    LevelRepo levelRepo;
     @Autowired
     UserRepo userRepo;
     @GetMapping("/login")
@@ -54,17 +52,18 @@ public class MainController {
         return "reg";
     }
     @PostMapping("/login/new")
-    public void createUser(UserDto userDto) {
+    public String createUser(UserDto userDto) {
         User user = new User();
         user.setEmail(userDto.getEmail());
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setPassword(passwordEncoder.encode(userDto.getPassword()));
         user.setPhone(userDto.getPhone());
-
+        user.setLevel(levelRepo.findByLevelNumber(1));
         Optional<Team> team = teamRepo.findById(userDto.getTeam_id());
         user.setTeam(team.get());
         userRepo.save(user);
+        return "redirect:/login";
     }
 //    @PostMapping("login")
 //    @ResponseBody

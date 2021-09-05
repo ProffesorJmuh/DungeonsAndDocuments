@@ -37,7 +37,7 @@ public class UserController {
     CriteriaRepo criteriaRepo;
 
 
-    @GetMapping
+    @GetMapping()
     public String userCard(@Autowired Authentication authentication, Model model){
         model.addAttribute("title", "Карточка Игрока");
         UserDetails userDetails = (UserDetails)authentication.getPrincipal();
@@ -50,7 +50,7 @@ public class UserController {
         model.addAttribute("addMax", levelRepo.findByLevelNumber(user.getLevel().getLevelNumber() + 1).getExp());
 
         Double userExp = criteriaRepo.getUserExp(user.getUser_id());
-        model.addAttribute("currEx", userExp.intValue());
+        model.addAttribute("currEx", userExp!=null?userExp.intValue():0);
 
         return "user/user";
     }
@@ -97,6 +97,6 @@ public class UserController {
 
         user.setAvatar(avatar);
         userRepo.save(user);
-        return "redirect:/user";
+        return "redirect:/";
     }
 }
