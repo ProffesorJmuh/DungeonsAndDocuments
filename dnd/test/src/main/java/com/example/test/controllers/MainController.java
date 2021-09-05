@@ -119,5 +119,15 @@ public class MainController {
         return suggestions;
     }
 
+    @GetMapping("/store")
 
+    public String getStorePage(Model model) {
+        model.addAttribute("title", "Магазин");
+        return "store";
+    }
+
+    @GetMapping("/")
+    public String getStartPage() {
+        return "redirect:/user";
+    }
 }

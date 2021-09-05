@@ -22,8 +22,7 @@
                     <input type="hidden" name="assigned" id="assigned">
                 </div>
         <div class="d-flex flex-row">
-            <input class="btn btn-success" type="submit" value="Create!"/>
-            <a class="btn btn-light" href="/customer">Back</a>
+            <input class="btn btn-success" type="submit" value="Создать"/>
 
         </div>
         <script>

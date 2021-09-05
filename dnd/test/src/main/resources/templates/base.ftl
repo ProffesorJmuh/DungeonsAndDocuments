@@ -8,6 +8,7 @@
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/main.css">
         <link rel="stylesheet" type="text/css" href="/style.css">
 
         <!-- Latest compiled and minified CSS -->
@@ -27,16 +28,16 @@
         <header>
             <div class="logo">
                 <a href="">
-                    <img id="logotipe" class='graficlogo' src="/img/logo.png" alt="Logo"/>
+                    <img id="logotipe" class='graficlogo left' src="/img/logo.png" alt="Logo"/>
                 </a>
 
                 <nav>
                     <div class="btn">
-                        <a href="index.html">Профиль</a>
-                        <a href="projects.html" target="_self">Рейтинг</a>
-                        <a href="blog.html" target="_self">Задания</a>
-                        <a href="contact.html" target="_self">Гильдии</a>
-                        <a href="about.html" target="_self">Магазин</a>
+                        <a href="/user">Профиль</a>
+                        <a href="/rating" target="_self">Рейтинг</a>
+                        <a href="/task" target="_self">Задания</a>
+                        <a href="#" target="_self">Гильдии</a>
+                        <a href="/store" target="_self">Магазин</a>
                     </div>
                 </nav>
             </div>

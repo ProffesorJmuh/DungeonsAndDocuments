@@ -1,15 +1,17 @@
 <#import "../base.ftl" as base>
 
 <@base.body "${title}">
-    <form method="GET" id="sortingForm" action="/rating">
+    <form method="GET" class="container mt-5" id="sortingForm" action="/rating">
         <input type="text" id="category" name="category" <#if category??>value="${category}"</#if> placeholder="Категория" />
         <input type="text" id="team" placeholder="Категория" <#if team_name??>value="${team_name}"</#if>/>
         <input type="hidden" id="team_id" name="team_id" <#if team_id??>value="${team_id}"</#if>/>
-        <button type="submit" class="btn btn-lg btn-info btn-block">Найти</button>
+        <button type="submit" class="btn btn-lg btn-info btn-block">Сортировать</button>
     </form>
+    <div class="container mt-5">
     <#list userList as userRating>
         ${userRating.user.email} - ${userRating.result}<#sep><br></#sep>
     </#list>
+    </div>
     <br/>
     <hr/>
     <script>

@@ -2,9 +2,9 @@
 
 <@base.body "${title}">
     <div class="container">
-        <form id="loginForm" class="form-signin" method="post" action="/login">
+        <form id="loginForm" class="form-signin mt-5" method="post" action="/login">
             <input type="hidden" name="_csrf" value="${_csrf.token}" />
-            <h2 class="form-signin-heading">Login</h2>
+
             <p>
                 <label for="username">Email</label>
                 <input type="text" id="username" name="username" class="form-control" placeholder="email" required>
@@ -15,7 +15,7 @@
             </p>
             <div class="d-flex flex-row">
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Войти</button>
-                <a class="btn btn-lg btn-success btn-block" href="/login/new">Зарегестрироваться</a>
+                <a class="ms-3 btn btn-lg btn-success btn-block" href="/login/new">Зарегестрироваться</a>
             </div>
         </form>
     </div>

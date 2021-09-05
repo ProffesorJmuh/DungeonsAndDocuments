@@ -1,0 +1,121 @@
+@font-face{
+font-family: AkayaKanadaka-Regular;
+src: url("../fonts/AkayaKanadaka-Regular.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+} 
+
+head, body {
+	margin: 0;
+	background-color: #dddddd;
+	font-size: 1.6vw
+}
+
+.ALLBody {
+	font-family: AkayaKanadaka-Regular;
+}
+
+nav {
+	display: grid;
+    grid-template-columns: 5fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr;
+	font-size: 1.8vw;
+	grid-column-gap: 0.01vw;
+	background-color: white;
+}
+
+.NavContainer {
+	margin-left: 1.4vw;
+	margin-top: 2vh;
+    margin-bottom: 2vh;
+    align-self: center;
+}
+
+#NavLogoImg {
+	height: 2em;
+	width: auto;
+}
+
+#NavCurPage {
+	color: #398dfa;
+}
+
+.NavLink {
+	text-decoration: none;
+	color: black;
+	font-family: AkayaKanadaka-Regular;
+}
+
+.RatingPageRatingAnnot {
+	text-align: center;
+	margin: 4vh;
+}
+
+.RatingPageRatingContainer {
+
+}
+
+.RatingPageRatingTypeContainer {
+	text-align: center;
+}
+
+.RatingPageRatingType {
+	display: inline-block;
+	margin: 0vw 5vw;
+	padding-bottom: 3vh;
+}
+
+.RatingPageRatingType > a {
+	text-decoration: none;
+	color: black;
+}
+
+#RatingPageRatingTypeSelected {
+	border-bottom: 2px solid #398dfa;
+	color: #398dfa;
+	font-weight: bold;
+}
+
+#RatingPageRatingTypeSelected > a{
+	color: #398dfa;
+}
+
+.RatingPageRatingPageRatingPosContainer {
+
+}
+
+.RatingPageRatingPageRatingPosRowContainer {
+	width: inherit;
+	display: grid;
+    grid-template-columns: 1fr 2fr 2fr 1.2fr 1fr;
+    margin: 0 2.4vw;
+
+}
+
+.RatingPageRatingPos {
+	border: 1px solid black;
+	text-align: center;
+}
+
+.RatingPageRatingPos:nth-child(1) {
+
+}
+
+.RatingPageRatingPos:nth-child(2) {
+
+}
+
+.RatingPageRatingPos:nth-child(3) {
+
+}
+
+.RatingPageRatingPos:nth-child(4) {
+
+}
+
+.RatingPageRatingPos:nth-child(5) {
+
+}
+
+#RatingCurUser {
+	border: 1px solid #398dfa;
+}

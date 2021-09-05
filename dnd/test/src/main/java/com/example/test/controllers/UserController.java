@@ -2,10 +2,14 @@ package com.example.test.controllers;
 
 
 import com.example.test.dto.UserDto;
+import com.example.test.entities.Level;
 import com.example.test.entities.Team;
 import com.example.test.entities.User;
+import com.example.test.repos.CriteriaRepo;
+import com.example.test.repos.LevelRepo;
 import com.example.test.repos.TeamRepo;
 import com.example.test.repos.UserRepo;
+import com.example.test.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +31,10 @@ public class UserController {
     TeamRepo teamRepo;
     @Autowired
     PasswordEncoder passwordEncoder;
+    @Autowired
+    LevelRepo levelRepo;
+    @Autowired
+    CriteriaRepo criteriaRepo;
 
 
     @GetMapping
@@ -35,10 +43,15 @@ public class UserController {
         UserDetails userDetails = (UserDetails)authentication.getPrincipal();
         String email = userDetails.getUsername();
         User user = userRepo.findByEmail(email);
+        if(user.getAvatar() == null || user.getAvatar().isEmpty()){
+            return "redirect:/user/chooseAvatar";
+        }
+        model.addAttribute("user", user);
+        model.addAttribute("addMax", levelRepo.findByLevelNumber(user.getLevel().getLevelNumber() + 1).getExp());
 
-//        if(user.getAvatar() == null || user.getAvatar().isEmpty()){
-//            return "redirect:/user/chooseAvatar";
-//        }
+        Double userExp = criteriaRepo.getUserExp(user.getUser_id());
+        model.addAttribute("currEx", userExp.intValue());
+
         return "user/user";
     }
     @GetMapping("/{user_id}")
@@ -74,5 +87,16 @@ public class UserController {
     public String chooseAvatar(Model model){
         model.addAttribute("title", "Выберете свой аватар");
         return "user/chooseAvatar";
+    }
+
+    @PostMapping("chooseAvatar")
+    public String chooseAvatar(@Autowired Authentication authentication, String avatar){
+        UserDetails userDetails = (UserDetails)authentication.getPrincipal();
+        String email = userDetails.getUsername();
+        User user = userRepo.findByEmail(email);
+
+        user.setAvatar(avatar);
+        userRepo.save(user);
+        return "redirect:/user";
     }
 }

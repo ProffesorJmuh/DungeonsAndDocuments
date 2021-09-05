@@ -15,13 +15,6 @@ head, body {
 	font-family: AkayaKanadaka-Regular;
 }
 
-nav {
-	display: grid;
-    grid-template-columns: 5fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr;
-	font-size: 1.8vw;
-	grid-column-gap: 0.01vw;
-	background-color: white;
-}
 
 .NavContainer {
 	margin-left: 1.4vw;
