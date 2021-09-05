@@ -1,0 +1,117 @@
+@font-face{
+font-family: AkayaKanadaka-Regular;
+src: url("../fonts/AkayaKanadaka-Regular.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal; 
+} 
+
+head, body {
+	margin: 0;
+	background-color: #dddddd;
+	font-size: 1.8vw
+}
+
+.ALLBody {
+	font-family: AkayaKanadaka-Regular;
+}
+
+nav {
+	display: grid;
+    grid-template-columns: 5fr 0.9fr 0.9fr 0.9fr 0.9fr 1fr;
+	font-size: 1.8vw;
+	grid-column-gap: 0.01vw;
+	background-color: white;
+}
+
+.NavContainer {
+	margin-left: 1.4vw;
+	margin-top: 2vh;
+    margin-bottom: 2vh;
+    align-self: center;
+}
+
+#NavLogoImg {
+	height: 2em;
+	width: auto;
+}
+
+#NavCurPage {
+	color: #398dfa;
+}
+
+.NavLink {
+	text-decoration: none;
+	color: black;
+	font-family: AkayaKanadaka-Regular;
+}
+
+.MainStoreAnnot, .AdvancedStoreAnnot {
+	margin-left: 2vw;
+	font-size: 1.8vw;
+	font-family: AkayaKanadaka-Regular;
+	font-weight: bolder;
+	margin-top: 3vh;
+	margin-bottom: 3vh; 
+}
+
+.MainStoreBase, .AdvancedStoreBase {
+	margin-left: 0.3vw;
+	margin-right: 0.3vw;
+	background-color: white;
+	border-radius: 0.7vw;
+	display: flex;
+
+	flex-direction: row;
+	flex-grow: 2;
+
+	flex-flow: wrap;
+    flex-grow: 1;
+
+	/*grid-auto-columns: 13vw;
+	grid-auto-flow: column;*/
+	
+
+}
+
+.MainStoreProduct, .AdvancedStoreProduct {
+	margin-top: 0.8em;
+	margin-bottom: 0.8em;
+	margin-left: 1.7em;
+	text-align: center;
+	font-size: 1.4vw;
+    width: min-content;
+    margin-right: 4.6em;
+	
+	
+}
+
+.MainStoreProductImg, .AdvancedStoreProductImg {
+    width: 7.4em;
+    height: 7.4em;
+}
+
+.MainStoreProductButtonContainer, .AdvancedStoreProductButtonContainer {
+	width: inherit;
+	margin-top: 0.3em;
+}
+
+.MainStoreProductButton, .AdvancedStoreProductButton {
+	margin-left: 0.6em;
+    width: 10rem;
+	background-color: #398dfa;
+	border-radius: 0.7vw;
+	color: white;
+    padding: 5px;	
+}
+
+.MainStoreProductButton:hover, .AdvancedStoreProductButton:hover {
+	margin-left: 0.6em;
+    width: 10rem;
+	background-color: #2c6dc0;
+	border-radius: 0.7vw;
+	cursor: pointer;
+}
+
+footer {
+	margin-top: 4rem
+}

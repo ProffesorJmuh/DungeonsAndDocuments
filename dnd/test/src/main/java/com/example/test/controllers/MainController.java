@@ -119,15 +119,5 @@ public class MainController {
         return suggestions;
     }
 
-    @GetMapping("/userCard")
-    public String userCard(@Autowired Authentication authentication){
-        UserDetails userDetails = (UserDetails)authentication.getPrincipal();
-        String email = userDetails.getUsername();
-        User user = userRepo.findByEmail(email);
 
-//        if(user.getAvatar() == null || user.getAvatar().isEmpty()){
-//            return "redirect:/user/chooseAvatar";
-//        }
-        return "user";
-    }
 }

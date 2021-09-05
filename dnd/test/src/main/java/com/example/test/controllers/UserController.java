@@ -7,6 +7,8 @@ import com.example.test.entities.User;
 import com.example.test.repos.TeamRepo;
 import com.example.test.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -27,7 +29,18 @@ public class UserController {
     PasswordEncoder passwordEncoder;
 
 
+    @GetMapping
+    public String userCard(@Autowired Authentication authentication, Model model){
+        model.addAttribute("title", "Карточка Игрока");
+        UserDetails userDetails = (UserDetails)authentication.getPrincipal();
+        String email = userDetails.getUsername();
+        User user = userRepo.findByEmail(email);
 
+//        if(user.getAvatar() == null || user.getAvatar().isEmpty()){
+//            return "redirect:/user/chooseAvatar";
+//        }
+        return "user/user";
+    }
     @GetMapping("/{user_id}")
     public String getUserPage(Model model,
                               @PathVariable("user_id") Integer user_id) {

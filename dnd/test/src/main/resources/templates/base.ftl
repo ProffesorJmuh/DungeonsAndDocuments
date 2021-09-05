@@ -42,7 +42,7 @@
             </div>
 
         </header>
-    <div class="container mt-3">
+    <div>
         <#nested>
     </div>
 
